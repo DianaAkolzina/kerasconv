@@ -1,0 +1,19 @@
+
+# Define a list of class names
+class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
+
+# Create a dictionary to store the first image from each class
+class_images = {}
+for i in range(len(class_names)):
+    index = (y_train == i).nonzero()[0][0]
+    class_images[i] = x_train[index]
+
+# Plot the first image from each class
+fig, axs = plt.subplots(2, 5, figsize=(10, 5))
+fig.subplots_adjust(hspace=0.5, wspace=0.5)
+axs = axs.ravel()
+for i in range(len(class_names)):
+    axs[i].imshow(class_images[i])
+    axs[i].set_title(class_names[i])
+    axs[i].axis('off')
+plt.show()
